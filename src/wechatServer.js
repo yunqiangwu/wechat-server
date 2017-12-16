@@ -7,7 +7,6 @@ import mailer from './mailer';
 
 
 let startCount = 0;
-let tid;
 
 export default function (email_address) {
 
@@ -88,11 +87,10 @@ export default function (email_address) {
       // 清除数据
       fs.unlinkSync(tempDir+'/sync-data.json');
     }catch (e) {console.log(e)}
-    setTimeout(()=>{
-      if(startCount < 5){
-        startBot();
-      }
-    }, 1000);
+    
+    if(startCount < 5){
+      startBot();
+    }
     
   })
   /**

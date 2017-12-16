@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node webServer.js"
+    "start": "babel-node src/webServer.js"
   },
   "author": "",
   "license": "ISC",
