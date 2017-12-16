@@ -1,0 +1,27 @@
+{
+  "name": "wechat-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node webServer.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "is-windows": "^1.0.1",
+    "koa": "^2.4.1",
+    "koa-bodyparser": "^4.2.0",
+    "koa-route": "^3.2.0",
+    "koa-static": "^4.0.2",
+    "nodemailer": "^4.4.1",
+    "qrcode-terminal": "^0.11.0",
+    "wechat4u": "^0.7.6"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2016": "^6.24.1"
+  }
+}
