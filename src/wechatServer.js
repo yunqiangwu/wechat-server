@@ -11,6 +11,8 @@ let startCount = 0;
 export default function (email_address) {
 
   let isLogined;
+  let loginImg = null;
+
   
   const isWin = isWindows();
 
@@ -51,14 +53,15 @@ export default function (email_address) {
     qrcode.generate('https://login.weixin.qq.com/l/' + uuid, {
       small: true
     });
-    if(email_address){
-      mailer.send({
-      title: '微信二维码登录',
-      content: `<img src="https://login.weixin.qq.com/qrcode/${uuid}" />`,
-      to: email_address,
-    });
-    }
+    // if(email_address){
+    //   mailer.send({
+    //     title: '微信二维码登录',
+    //     content: `<img src="https://login.weixin.qq.com/qrcode/${uuid}" />`,
+    //     to: email_address,
+    //   });
+    // }
     console.log('二维码链接：', 'https://login.weixin.qq.com/qrcode/' + uuid)
+    loginImg = 'https://login.weixin.qq.com/qrcode/' + uuid;
   })
   /**
    * 登录用户头像事件，手机扫描后可以得到登录用户头像的Data URL
@@ -72,6 +75,7 @@ export default function (email_address) {
   bot.on('login', () => {
     console.log('登录成功')
     isLogined = true;
+    loginImg = null;
     // 保存数据，将数据序列化之后保存到任意位置
     fs.writeFileSync(tempDir+'/sync-data.json', JSON.stringify(bot.botData))
   })
@@ -277,6 +281,7 @@ export default function (email_address) {
 
 
   return {
+    getLoginImg: () => loginImg,
     sendMsg: (msg,wechatTo)=>{
       if(!isLogined || !msg){
         return;
